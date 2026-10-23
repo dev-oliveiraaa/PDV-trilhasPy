@@ -2,7 +2,13 @@
 compras = []
 
 while True:
-    valor = float(input("Digite o valor da compra (ou 0 para encerrar): "))
+    valorTexto = input("Digite o valor da compra (ou 0 para encerrar): ")
+
+    while not valorTexto.replace(".", "", 1).isdigit():
+        print("Valor inválido! Digite um número.")
+        valorTexto = input("Digite o valor da compra (ou 0 para encerrar): ")
+
+    valor = float(valorTexto)
 
     if valor == 0:
         break
@@ -11,24 +17,31 @@ while True:
         print("Valor inválido. Tente novamente.")
         continue
 
-    idade = int(input("Digite a idade do cliente: "))
-    quantidade = int(input("Digite a quantidade de itens: "))
+    idadeTexto = input("Digite a idade do cliente: ")
 
-    if idade <= 0:
-        print("Idade inválida. Tente novamente.")
-        continue
+    while not idadeTexto.isdigit() or int(idadeTexto) <= 0:
+        print("Idade inválida! Digite um número inteiro positivo.")
+        idadeTexto = input("Digite a idade do cliente: ")
 
-    if quantidade <= 0:
-        print("Quantidade inválida. Tente novamente.")
-        continue
+    idade = int(idadeTexto)
+
+    quantidadeTexto = input("Digite a quantidade de itens: ")
+
+    while not quantidadeTexto.isdigit() or int(quantidadeTexto) <= 0:
+        print("Quantidade inválida! Digite um número inteiro positivo.")
+        quantidadeTexto = input("Digite a quantidade de itens: ")
+
+    quantidade = int(quantidadeTexto)
 
     cupom = input(
         "Digite o cupom de fidelidade (ou Enter para ignorar): "
     ).strip()
 
-    if cupom != "" and cupom != "FIDELIDADE10":
+    while cupom != "" and cupom != "FIDELIDADE10":
         print("Cupom inválido! Tente novamente.")
-        continue
+        cupom = input(
+            "Digite o cupom de fidelidade (ou Enter para ignorar): "
+        ).strip()
 
     valorFinal = valor
 
@@ -78,13 +91,9 @@ else:
             arquivo.write("Valor final: R$ %.2f\n" % compra[3])
             arquivo.write("Desconto: R$ %.2f\n\n" % compra[4])
 
-        arquivo.write(
-            "Total de compras realizadas: %d\n" % len(compras)
-        )
+        arquivo.write("Total de compras realizadas: %d\n" % len(compras))
         arquivo.write("Total bruto das compras: R$ %.2f\n" % totalBruto)
-        arquivo.write(
-            "Total de descontos concedidos: R$ %.2f\n" % totalDescontos
-        )
+        arquivo.write("Total de descontos concedidos: R$ %.2f\n" % totalDescontos)
         arquivo.write("Total líquido das compras: R$ %.2f\n" % totalLiquido)
 
     print("\nResumo salvo no arquivo resumo.txt!")
