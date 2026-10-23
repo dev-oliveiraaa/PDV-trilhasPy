@@ -57,13 +57,15 @@ def menu():
         print("Nenhuma compra realizada.")
         return
 
-    print("\nResumo das compras realizadas:\n")
+    print("\nResumo das compras realizadas:")
 
     for compra in compras:
         print(
             "Valor: R$ %.2f, Idade: %d, Valor Final: R$ %.2f, Desconto: R$ %.2f"
             % (compra[0], compra[1], compra[2], compra[3])
         )
+        
+    print("Total de compras realizadas: %d" % len(compras))
 
 
 menu()
