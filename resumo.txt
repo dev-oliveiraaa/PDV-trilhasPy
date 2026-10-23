@@ -1,0 +1,76 @@
+Resumo das compras realizadas:
+
+Compra 1:
+Valor original: R$ 50.00
+Idade do cliente: 30 anos
+Quantidade de itens: 1
+Valor final: R$ 50.00
+Desconto: R$ 0.00
+
+Compra 2:
+Valor original: R$ 100.00
+Idade do cliente: 30 anos
+Quantidade de itens: 1
+Valor final: R$ 100.00
+Desconto: R$ 0.00
+
+Compra 3:
+Valor original: R$ 80.00
+Idade do cliente: 65 anos
+Quantidade de itens: 1
+Valor final: R$ 64.00
+Desconto: R$ 16.00
+
+Compra 4:
+Valor original: R$ 100.00
+Idade do cliente: 70 anos
+Quantidade de itens: 1
+Valor final: R$ 80.00
+Desconto: R$ 20.00
+
+Compra 5:
+Valor original: R$ 125.00
+Idade do cliente: 70 anos
+Quantidade de itens: 1
+Valor final: R$ 100.00
+Desconto: R$ 25.00
+
+Compra 6:
+Valor original: R$ 200.00
+Idade do cliente: 30 anos
+Quantidade de itens: 1
+Valor final: R$ 180.00
+Desconto: R$ 20.00
+
+Compra 7:
+Valor original: R$ 101.00
+Idade do cliente: 30 anos
+Quantidade de itens: 1
+Valor final: R$ 90.90
+Desconto: R$ 10.10
+
+Compra 8:
+Valor original: R$ 200.00
+Idade do cliente: 65 anos
+Quantidade de itens: 1
+Valor final: R$ 144.00
+Desconto: R$ 56.00
+
+Compra 9:
+Valor original: R$ 1000.00
+Idade do cliente: 80 anos
+Quantidade de itens: 1
+Valor final: R$ 720.00
+Desconto: R$ 280.00
+
+Compra 10:
+Valor original: R$ 200.00
+Idade do cliente: 64 anos
+Quantidade de itens: 1
+Valor final: R$ 180.00
+Desconto: R$ 20.00
+
+Total de compras realizadas: 10
+Total bruto das compras: R$ 2156.00
+Total de descontos concedidos: R$ 447.10
+Total líquido das compras: R$ 1708.90
