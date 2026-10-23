@@ -1,13 +1,16 @@
 
-def calcDesc(valor, idade, quantidade):
+def calcDesc(valor, idade, quantidade, cupom):
     if idade >= 65:
         valor = valor - (valor * 0.20)
 
     if valor > 100.00:
         valor = valor - (valor * 0.10)
-        
+
     if quantidade > 3:
         valor = valor - (valor * 0.05)
+
+    if cupom == "FIDELIDADE10":
+        valor = valor - (valor * 0.10)
 
     return valor
 
@@ -20,7 +23,7 @@ def ler():
         return ler()
 
     if valor == 0:
-        return None, None, None
+        return None, None, None, None
 
     if valor < 0:
         print("Valor inválido. Tente novamente.")
@@ -46,19 +49,21 @@ def ler():
         print("Quantidade inválida. Tente novamente.")
         return ler()
 
-    return valor, idade, quantidade
+    cupom = input("Digite o cupom de fidelidade (ou Enter para ignorar): ").strip()
+
+    return valor, idade, quantidade, cupom
 
 
 def menu():
     compras = []
 
     while True:
-        valor, idade, quantidade = ler()
+        valor, idade, quantidade, cupom = ler()
 
         if valor is None:
             break
 
-        valorFinal = calcDesc(valor, idade, quantidade)
+        valorFinal = calcDesc(valor, idade, quantidade, cupom)
         desconto = valor - valorFinal
 
         print("Valor final da compra: R$ %.2f" % valorFinal)
@@ -71,7 +76,6 @@ def menu():
 
     print("\nResumo das compras realizadas:")
 
-        
     print("Total de compras realizadas: %d" % len(compras))
     print("Total bruto das compras: R$ %.2f" % sum(compra[0] for compra in compras))
     print("Total de descontos concedidos: R$ %.2f" % sum(compra[4] for compra in compras))
