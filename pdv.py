@@ -1,10 +1,13 @@
 
-def calcDesc(valor, idade):
+def calcDesc(valor, idade, quantidade):
     if idade >= 65:
         valor = valor - (valor * 0.20)
 
     if valor > 100.00:
         valor = valor - (valor * 0.10)
+        
+    if quantidade > 3:
+        valor = valor - (valor * 0.05)
 
     return valor
 
@@ -17,7 +20,7 @@ def ler():
         return ler()
 
     if valor == 0:
-        return None, None
+        return None, None, None
 
     if valor < 0:
         print("Valor inválido. Tente novamente.")
@@ -29,29 +32,38 @@ def ler():
         print("Idade inválida! Digite um número inteiro.")
         return ler()
 
+    try:
+        quantidade = int(input("Digite a quantidade de itens: "))
+    except ValueError:
+        print("Quantidade inválida! Digite um número inteiro.")
+        return ler()
+
     if idade <= 0:
         print("Idade inválida. Tente novamente.")
         return ler()
 
-    valor, idade = valor, idade
-    return valor, idade
+    if quantidade <= 0:
+        print("Quantidade inválida. Tente novamente.")
+        return ler()
+
+    return valor, idade, quantidade
 
 
 def menu():
     compras = []
 
     while True:
-        valor, idade = ler()
+        valor, idade, quantidade = ler()
 
         if valor is None:
             break
 
-        valorFinal = calcDesc(valor, idade)
+        valorFinal = calcDesc(valor, idade, quantidade)
         desconto = valor - valorFinal
 
         print("Valor final da compra: R$ %.2f" % valorFinal)
 
-        compras.append((valor, idade, valorFinal, desconto))
+        compras.append((valor, idade, quantidade, valorFinal, desconto))
 
     if not compras:
         print("Nenhuma compra realizada.")
@@ -59,13 +71,11 @@ def menu():
 
     print("\nResumo das compras realizadas:")
 
-    for compra in compras:
-        print(
-            "Valor: R$ %.2f, Idade: %d, Valor Final: R$ %.2f, Desconto: R$ %.2f"
-            % (compra[0], compra[1], compra[2], compra[3])
-        )
         
     print("Total de compras realizadas: %d" % len(compras))
+    print("Total bruto das compras: R$ %.2f" % sum(compra[0] for compra in compras))
+    print("Total de descontos concedidos: R$ %.2f" % sum(compra[4] for compra in compras))
+    print("Total líquido das compras: R$ %.2f" % sum(compra[3] for compra in compras))
 
 
 menu()
