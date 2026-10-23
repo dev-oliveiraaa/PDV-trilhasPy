@@ -17,7 +17,7 @@ def calcDesc(valor, idade, quantidade, cupom):
 
 def ler():
     try:
-        valor = float(input("Digite o valor da compra (ou 0 para encerrar): \n"))
+        valor = float(input("Digite o valor da compra (ou 0 para encerrar): "))
     except ValueError:
         print("Valor inválido! Digite um número.")
         return ler()
@@ -35,7 +35,7 @@ def ler():
         print("Idade inválida! Digite um número inteiro.")
         return ler()
 
-    try:
+    try:# Salvar o resumo no arquivo
         quantidade = int(input("Digite a quantidade de itens: "))
     except ValueError:
         print("Quantidade inválida! Digite um número inteiro.")
